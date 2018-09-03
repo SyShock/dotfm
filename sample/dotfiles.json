@@ -1,0 +1,8 @@
+{
+    "default": {
+        "links": {
+            "~/test/dotfiles.json": "./sample/dotfiles.json",
+            "~/test/DEPENDENCIES.md": "./sample/DEPENDENCIES.md"
+        }
+    }
+}
