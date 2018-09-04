@@ -15,5 +15,8 @@ else
     if [ -e "../$proj" ]; then
         cd ..
     fi
+    if [ ! -e "./$proj/src/setup_dotfiles.py" ]; then
+        git submodule update --init --recursive
+    fi
     python ./$proj/src/setup_dotfiles.py
 fi
