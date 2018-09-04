@@ -1,4 +1,5 @@
-### Dotfiles Manager
+## DotFM
+#### Dotfiles Manager
 
 A script to manage your unix dotfiles.
 
@@ -7,7 +8,7 @@ A script to manage your unix dotfiles.
 - logs the changes made
 
 Motivation:
-A quick shot attempt at making own script for managing dotfiles,
+A quick shot attempt at making own script for managing dotfiles
 and testing with docker.
 
 The format for dotfiles.json is the following:

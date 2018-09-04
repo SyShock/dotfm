@@ -1,5 +1,5 @@
 #!/bin/sh
-proj=".dot_manager"
+proj=".dotfm"
 
 if [ ! -e "$proj" ] && [ ! -e "../$proj" ]; then
     mkdir $proj
@@ -12,5 +12,8 @@ if [ ! -e "$proj" ] && [ ! -e "../$proj" ]; then
     mkdir dotfiles
     echo "Installed. You can now place your dotfiles in the ./dotfiles folder."
 else
+    if [ -e "../$proj" ]; then
+        cd ..
+    fi
     python ./$proj/src/setup_dotfiles.py
 fi
