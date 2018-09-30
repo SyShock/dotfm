@@ -3,7 +3,7 @@ Author: SyShock
 Description: this script installs the dotfiles on your system, it has two options: install or recover
 Additional: this script does not install the missing dependencies that the dotfiles' programs will use, yet...
 '''
-# CONFIG STRINGS
+# CONFIG
 logfile = "setup.log"
 dotfile = "dotfiles.json"
 backup_suffix = "__backup"
@@ -14,6 +14,7 @@ import json
 import logger
 import dep_installer as dep
 import link_installer as link
+import argparse
 
 def print_notifier():
     print("----------------------------------------------------------------")
@@ -28,6 +29,10 @@ def read_config():
 
 def main():
     print("Dotfiles script:")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-f", "--file", dest="filename", action="store",
+                  help="write report to FILE", metavar="FILE")
+    dotfile = parser.parse_args().filename
     link.init(log, backup_suffix)
     data = read_config()
     links = data[preset]['links']
