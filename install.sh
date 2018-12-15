@@ -1,11 +1,16 @@
 #!/bin/sh
+
+# Default config
 proj=".dotfm"
 file="dotfiles.json"
+option="None"
+################
 
 usage() {
   cat << EOF >&2
-    Usage: $PROGNAME [-f <file>]
+    Usage: $PROGNAME [-f <file>] [-i <install>] [-r <remove>] [-l <list>] 
     -f <file>: config file you'd like to use
+    -i <install> -r <remove> -l <list>: option you'd like to use without being prompted
 EOF
   exit 1
 }
@@ -23,19 +28,25 @@ init() {
 }
 
 install() {
-    while getopts "f:" opt; do
+    while getopts "f:ilr" opt; do
         case $opt in
             (f) file=$OPTARG;;
+            (i) option="i";;
+            (l) option="l";;
+            (r) option="r";;
             (*) usage
         esac
     done
+
     if [ -e "../$proj" ]; then
         cd ..
     fi
+
     if [ ! -e "./$proj/src/setup_dotfiles.py" ]; then
         git submodule update --init --recursive
     fi
-    python ./$proj/src/setup_dotfiles.py -f $file
+
+    python ./$proj/src/setup_dotfiles.py -f $file -o $option
 }
 
 if [ ! -e "$proj" ] && [ ! -e "../$proj" ]; then

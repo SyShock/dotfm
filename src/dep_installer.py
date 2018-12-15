@@ -15,11 +15,16 @@ def _iterate(list, cmd):
 def init(logger):
     global log
     log = logger
-    print("This preset has dependencies how do you want to handle this?")
+    # print("This preset has dependencies how do you want to handle this?")
     # option = input("[m]anually or [a]uto ")
     # if option == "a":
         #exec(["wget", "https://github.com/icy/pacapt/raw/ng/pacapt", "-O", "./pacapt"])
         #exec(["chmod", "755", "./pacapt"])
+
+def list(deps):
+     for item in deps:
+        print(item+": "+deps[item])
+
 
 def install(deps):
     packages = deps['package']
