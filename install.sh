@@ -46,7 +46,8 @@ install() {
         git submodule update --init --recursive
     fi
 
-    python ./$proj/src/setup_dotfiles.py -f $file -o $option
+    err_message=$(python ./$proj/src/setup_dotfiles.py -f $file -o $option 1>/dev/stdin 2>&1)
+    echo $err_message
 }
 
 if [ ! -e "$proj" ] && [ ! -e "../$proj" ]; then
@@ -54,7 +55,9 @@ if [ ! -e "$proj" ] && [ ! -e "../$proj" ]; then
 else
     install $*
 
-    # post-install 
-    
+    if [[ option == "i" ]] && [[ -z err_message ]]; then
+        # post-install 
+        source ./preprocessor.sh
+    fi
 fi
 

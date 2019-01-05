@@ -18,7 +18,7 @@ def install(list):
         path, source = _correct_path(item, list[item])
         if os.path.exists(path+backup_suffix):
             log(path+backup_suffix+" exists, script will stop to prevent file mangling")
-            return
+            exit('Script Exited!')
             # option = input("[s]kip, [o]verwrite, [a]bort")
             # if option == 's':
             #     continue

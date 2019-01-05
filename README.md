@@ -15,6 +15,9 @@ The format for dotfiles.json is the following:
 ```
 {
     "default": {
+        "dependencies": {
+            "example": "github.com/example.git"
+        },
         "links": {
             "<Destination>": "<Source>"
         }

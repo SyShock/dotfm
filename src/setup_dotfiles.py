@@ -51,7 +51,7 @@ def main():
         print_notifier()
         dep.init(log)
         #dep.install(deps)
-        link.install(deps)
+        link.install(links)
         dep.list(deps)
         log("----------------------------------------------------------------")  
         log("Installation complete!\n")

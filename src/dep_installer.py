@@ -22,8 +22,9 @@ def init(logger):
         #exec(["chmod", "755", "./pacapt"])
 
 def list(deps):
-     for item in deps:
-        print(item+": "+deps[item])
+        print("\n# DEPENDENCIES\n---------------------------")      
+        for item in deps:
+                print(item+": "+deps[item])
 
 
 def install(deps):
