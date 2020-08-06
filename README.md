@@ -29,27 +29,16 @@ The format for dotfiles.json is the following:
 
 ```JSON
 {
-    "default": {
-        "dependencies": {
-            "example": "github.com/example.git"
-        },
-        "links": {
-            "<Destination>": "<Source>"
-        }
+    "dependencies": {
+        "example": "github.com/example.git"
+    },
+    "links": {
+        "<Destination>": "<Source>"
     }
 }
 ```
 
-You use different presets like this:
-
-```JSON
-    ...
-    "custom": {
-        "links": {
-            "<Destination>": "<Source>"
-        }
-    }
-```
+You use different presets you have to create a new file, **it needs to have the same name as the dotfiles folder!**
 
 Just remember to specify this preset on execution
 

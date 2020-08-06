@@ -1,0 +1,9 @@
+{
+    "dependencies": {
+        "example": "github.com/example.git"
+    },
+    "links": {
+        "~/test/dotfiles.json": "./sample/dotfiles.json",
+        "~/test/installer.py": "./install.py"
+    }
+}

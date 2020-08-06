@@ -8,7 +8,7 @@ import json
 
 # DEFAULT CONFIG
 logfile = "setup.log"
-dotfile = "dotfiles.json"
+dotfile = "default.json"
 backup_suffix = "__backup"
 preset = "default"
 home = os.path.expanduser("~")
@@ -20,8 +20,6 @@ parser.add_argument("-f", "--file", dest="filename", default=dotfile,
                     help="read from FILE", metavar="FILE")
 parser.add_argument("-o", "--option", dest="option", required=False,
                     help="set OPTION without propting for one", metavar="OPTION")
-parser.add_argument("-p", "--preset", dest="preset", required=False, default=preset,
-                    help="specify preset", metavar="PRESET")
 args = parser.parse_args()
 #------------------------------------------
 
@@ -60,7 +58,6 @@ class Installer():
     def __init__(self, backup_suffix=backup_suffix, logger: Logger=None):
         self.logger = logger
         self.dotfile = args.filename
-        preset = args.preset
         
         option = args.option
         if option is None:
@@ -68,8 +65,8 @@ class Installer():
 
         data = read_config(self.dotfile)
         try:
-            links = data[preset]['links']
-            deps = data[preset]['dependencies']
+            links = data['links']
+            deps = data['dependencies']
         except:
             print('Did you specify an existing preset?')
             exit()
@@ -90,7 +87,8 @@ class Installer():
             exit()
     
     def install(self, list: []):
-        dotfile = '/'.join(self.dotfile.split('/')[0:-1])
+        # Get name to folder to look at
+        dotfile = self.dotfile.split('/')[-1]
         for item in list:
             path, source = correct_path(item, list[item])
             if os.path.exists(path+backup_suffix):
